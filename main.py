@@ -52,7 +52,7 @@ class GistViewHandler(webapp.RequestHandler):
         <span class="description">%s</span>
         by <a href="http://github.com/%s" class="owner">%s</a>
       </h2>
-      <iframe src=\"/d/%s/\"></iframe>
+      <iframe marginwidth="0" marginheight="0" scrolling="no" src=\"/d/%s/\"></iframe>
 """ % (id, id, id, escape(description), quote(owner), escape(owner), id))
     for f in meta[':files']:
       self.response.out.write('<script src="http://gist.github.com/%s.js?file=%s"></script>' % (id, f))
