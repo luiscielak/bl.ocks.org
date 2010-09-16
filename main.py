@@ -30,6 +30,9 @@ class GistViewHandler(webapp.RequestHandler):
   def get(self, id):
     raw = fetch('http://gist.github.com/api/v1/yaml/%s' % id)
     meta = yaml.load(raw.content)['gists'][0]
+    owner = meta[':owner'] or ""
+    description = meta[':description'] or ""
+
     self.response.out.write("""
 <!DOCTYPE html>
 <html>
@@ -45,14 +48,12 @@ class GistViewHandler(webapp.RequestHandler):
     <div class="body">
       <a href="/" class="about right">What&rsquo;s all this then?</a>
       <h1>block <a href="http://gist.github.com/%s">#%s</a></h1>
-""" % (id, id, id))
-    self.response.out.write("""
       <h2>
         <span class="description">%s</span>
         by <a href="http://github.com/%s" class="owner">%s</a>
       </h2>
-""" % (escape(meta[':description']), quote(meta[':owner']), escape(meta[':owner'])))
-    self.response.out.write('<iframe src=\"/d/%s/\"></iframe>' % id)
+      <iframe src=\"/d/%s/\"></iframe>
+""" % (id, id, id, escape(description), quote(owner), escape(owner), id))
     for f in meta[':files']:
       self.response.out.write('<script src="http://gist.github.com/%s.js?file=%s"></script>' % (id, f))
     self.response.out.write("""
