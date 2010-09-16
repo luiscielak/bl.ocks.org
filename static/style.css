@@ -1,0 +1,52 @@
+body, .gist-meta {
+  font: 14px Helvetica Neue;
+}
+
+a {
+  color: steelblue !important;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  margin-top: 1em;
+}
+
+.body {
+  width: 960px;
+  margin: auto;
+}
+
+.logo {
+  color: steelblue;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 300;
+}
+
+iframe {
+  width: 960px;
+  height: 500px;
+  border: 1px solid #DEDEDE;
+  margin-bottom: 1em;
+}
+
+.about {
+  display: block;
+  font-weight: 300;
+  line-height: 60px;
+}
+
+.about .domain {
+  color: black;
+}
+
+.right {
+  float: right;
+}
