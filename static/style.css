@@ -30,6 +30,16 @@ h1 {
   font-weight: 300;
 }
 
+h2 {
+  font-weight: normal;
+  color: #666;
+}
+
+h2 .description {
+  color: #000;
+  font-weight: bold;
+}
+
 iframe {
   width: 960px;
   height: 500px;

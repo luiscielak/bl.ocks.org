@@ -17,13 +17,10 @@
 
 import wsgiref.handlers
 import yaml
+from cgi import escape
 from urllib import quote
 from google.appengine.ext import webapp
 from google.appengine.api.urlfetch import fetch
-
-class MainHandler(webapp.RequestHandler):
-  def get(self):
-    self.response.out.write('Hello world!')
 
 class GistRedirectHandler(webapp.RequestHandler):
   def get(self, id):
@@ -32,7 +29,7 @@ class GistRedirectHandler(webapp.RequestHandler):
 class GistViewHandler(webapp.RequestHandler):
   def get(self, id):
     raw = fetch('http://gist.github.com/api/v1/yaml/%s' % id)
-    meta = yaml.load(raw.content)
+    meta = yaml.load(raw.content)['gists'][0]
     self.response.out.write("""
 <!DOCTYPE html>
 <html>
@@ -40,20 +37,26 @@ class GistViewHandler(webapp.RequestHandler):
     <title>bl.ocks.org - %s</title>
     <style type="text/css">
 
-@import url("/static/style.css");
+@import url("/style.css");
 
     </style>
   </head>
   <body>
     <div class="body">
-      <a href="/static/about.html" class="about right">What&rsquo;s all this then?</a>
+      <a href="/" class="about right">What&rsquo;s all this then?</a>
       <h1>block <a href="http://gist.github.com/%s">#%s</a></h1>
 """ % (id, id, id))
+    self.response.out.write("""
+      <h2>
+        <span class="description">%s</span>
+        by <a href="http://github.com/%s" class="owner">%s</a>
+      </h2>
+""" % (escape(meta[':description']), quote(meta[':owner']), escape(meta[':owner'])))
     self.response.out.write('<iframe src=\"/d/%s/\"></iframe>' % id)
-    for f in meta['gists'][0][':files']:
+    for f in meta[':files']:
       self.response.out.write('<script src="http://gist.github.com/%s.js?file=%s"></script>' % (id, f))
     self.response.out.write("""
-      <a href="/static/about.html" class="about">about bl.ocks.org</a>
+      <a href="/" class="about">about bl.ocks.org</a>
     </div>
   </body>
 </html>
@@ -68,7 +71,6 @@ class GistDataHandler(webapp.RequestHandler):
 
 def main():
   application = webapp.WSGIApplication([
-      ('/', MainHandler),
       ('/([0-9]+)', GistRedirectHandler),
       ('/([0-9]+)/', GistViewHandler),
       ('/d/([0-9]+)/(.*)', GistDataHandler)
