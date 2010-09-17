@@ -26,7 +26,7 @@ from google.appengine.api.urlfetch import fetch
 
 class GistRedirectHandler(webapp.RequestHandler):
   def get(self, id):
-    self.redirect('/%s/' % id)
+    self.redirect('/%s' % id)
 
 class GistViewHandler(webapp.RequestHandler):
   def get(self, id):
@@ -98,8 +98,8 @@ class GistDataHandler(webapp.RequestHandler):
 
 def main():
   application = webapp.WSGIApplication([
-      ('/([0-9]+)', GistRedirectHandler),
-      ('/([0-9]+)/', GistViewHandler),
+      ('/([0-9]+)', GistViewHandler),
+      ('/([0-9]+)/', GistRedirectHandler),
       ('/d/([0-9]+)/(.*)', GistDataHandler)
       ], debug=True)
   wsgiref.handlers.CGIHandler().run(application)
