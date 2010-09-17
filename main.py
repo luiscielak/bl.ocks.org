@@ -101,6 +101,15 @@ class GistDataHandler(webapp.RequestHandler):
     if not file:
       file = 'index.html'
     raw = fetch('http://gist.github.com/raw/%s/%s' % (id, quote(file)))
+    if re.search("\.css$", file):
+      self.response.headers["Content-Type"] = "text/css"
+    elif re.search("\.js$", file):
+      self.response.headers["Content-Type"] = "text/javascript"
+    elif re.search("\.json$", file):
+      self.response.headers["Access-Control-Allow-Origin"] = "*"
+      self.response.headers["Content-Type"] = "application/json"
+    elif re.search("\.txt$", file):
+      self.response.headers["Content-Type"] = "text/plain"
     self.response.out.write(raw.content)
 
 def main():
