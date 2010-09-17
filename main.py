@@ -15,6 +15,9 @@
 # limitations under the License.
 #
 
+import os
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+
 import wsgiref.handlers
 import yaml
 import re
@@ -23,6 +26,10 @@ from urllib import quote
 from markdown import markdown
 from google.appengine.ext import webapp
 from google.appengine.api.urlfetch import fetch
+from google.appengine.dist import use_library
+
+use_library('django', '1.1')
+from django.utils.encoding import smart_unicode
 
 class GistRedirectHandler(webapp.RequestHandler):
   def get(self, id):
@@ -63,7 +70,7 @@ class GistViewHandler(webapp.RequestHandler):
     # display the README
     for f in files:
       if re.match("^readme\.mkd$", f, re.I):
-        html = markdown(fetch('http://gist.github.com/raw/%s/%s' % (id, quote(f))).content)
+        html = markdown(smart_unicode(fetch('http://gist.github.com/raw/%s/%s' % (id, quote(f))).content))
       elif re.match("^readme(\.txt)?$", f, re.I):
         html = "<pre>%s</pre>" % escape(fetch('http://gist.github.com/raw/%s/%s' % (id, quote(f))).content)
       else:
@@ -79,7 +86,7 @@ class GistViewHandler(webapp.RequestHandler):
 
     # display the other files as source
     for f in files:
-      if not re.match("^readme(\.[a-z]+)?$", f):
+      if not re.match("^readme(\.[a-z]+)?$", f, re.I):
         self.response.out.write('<script src="http://gist.github.com/%s.js?file=%s"></script>' % (id, f))
 
     self.response.out.write("""
