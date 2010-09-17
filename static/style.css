@@ -11,7 +11,7 @@ a:hover {
   text-decoration: underline;
 }
 
-body {
+body, .gist {
   text-rendering: optimizeLegibility;
   margin-top: 1em;
 }
@@ -23,6 +23,16 @@ body {
 
 .logo {
   color: steelblue;
+}
+
+.readme {
+  margin-bottom: 3em;
+}
+
+.time {
+  color: #666;
+  font-size: smaller;
+  font-style: oblique;
 }
 
 h1 {
@@ -44,7 +54,6 @@ iframe {
   width: 960px;
   height: 500px;
   border: 1px solid #DEDEDE;
-  margin-bottom: 1em;
 }
 
 .about {

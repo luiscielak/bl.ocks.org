@@ -17,8 +17,10 @@
 
 import wsgiref.handlers
 import yaml
+import re
 from cgi import escape
 from urllib import quote
+from markdown import markdown
 from google.appengine.ext import webapp
 from google.appengine.api.urlfetch import fetch
 
@@ -32,6 +34,8 @@ class GistViewHandler(webapp.RequestHandler):
     meta = yaml.load(raw.content)['gists'][0]
     owner = meta[':owner'] or ""
     description = meta[':description'] or ""
+    files = meta[':files'] or []
+    time = meta[':created_at']
 
     self.response.out.write("""
 <!DOCTYPE html>
@@ -53,9 +57,31 @@ class GistViewHandler(webapp.RequestHandler):
         by <a href="http://github.com/%s" class="owner">%s</a>
       </h2>
       <iframe marginwidth="0" marginheight="0" scrolling="no" src=\"/d/%s/\"></iframe>
+      <div class="readme">
 """ % (id, id, id, escape(description), quote(owner), escape(owner), id))
-    for f in meta[':files']:
-      self.response.out.write('<script src="http://gist.github.com/%s.js?file=%s"></script>' % (id, f))
+
+    # display the README
+    for f in files:
+      if re.match("^readme\.mkd$", f, re.I):
+        html = markdown(fetch('http://gist.github.com/raw/%s/%s' % (id, quote(f))).content)
+      elif re.match("^readme(\.txt)?$", f, re.I):
+        html = "<pre>%s</pre>" % escape(fetch('http://gist.github.com/raw/%s/%s' % (id, quote(f))).content)
+      else:
+        html = None
+      if html:
+        self.response.out.write(html)
+
+    # display the creation time
+    if time:
+      self.response.out.write("<p class=\"time\">Created at %s.</p>" % time)
+
+    self.response.out.write("</div>")
+
+    # display the other files as source
+    for f in files:
+      if not re.match("^readme(\.[a-z]+)?$", f):
+        self.response.out.write('<script src="http://gist.github.com/%s.js?file=%s"></script>' % (id, f))
+
     self.response.out.write("""
       <a href="/" class="about">about bl.ocks.org</a>
     </div>
