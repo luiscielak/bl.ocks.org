@@ -43,6 +43,7 @@ class GistViewHandler(webapp.RequestHandler):
     description = meta[':description'] or ""
     files = meta[':files'] or []
     time = meta[':created_at']
+    title = "%s - %s" % (id, escape(description)) if description else id
 
     self.response.out.write("""
 <!DOCTYPE html>
@@ -65,7 +66,7 @@ class GistViewHandler(webapp.RequestHandler):
       </h2>
       <iframe marginwidth="0" marginheight="0" scrolling="no" src=\"/d/%s/\"></iframe>
       <div class="readme">
-""" % (id, id, id, escape(description), quote(owner), escape(owner), id))
+""" % (title, id, id, escape(description), quote(owner), escape(owner), id))
 
     # display the README
     for f in files:
