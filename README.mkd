@@ -1,0 +1,7 @@
+# bl.ocks.org
+
+A simple Gist viewer for HTML/JavaScript examples. See <http://bl.ocks.org>
+for more information. The website runs on Google App Engine.
+
+For the Safari extension, see the `safariextension` branch. For the Chrome
+extension, see [jasondavies/bl.ocks.chrome](/jasondavies/bl.ocks.chrome).
