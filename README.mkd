@@ -1,0 +1,8 @@
+# bl.ocks.org
+
+This is the [Safari sxtension](http://extensions.apple.com/) for
+<http://bl.ocks.org>. If you're looking for the source code for the website,
+see the `master` branch.
+
+For the Chrome extension, see
+[jasondavies/bl.ocks.chrome](/jasondavies/bl.ocks.chrome).
