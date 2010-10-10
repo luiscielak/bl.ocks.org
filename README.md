@@ -10,12 +10,12 @@ in the current page and appends a link to the corresponding [bl.ock][2].
 Installation
 ------------
 
-To install the Google Chrome extension, download [bl.ocks.chrome.crx][extension].
+To install the Google Chrome extension, download [bl.ocks.chrome-1.1.crx][extension].
 
 To install the bookmarklet, add the contents of `bl.ocks.bookmarklet.min.js` as
 a bookmark.
 
-[extension]: http://github.com/downloads/jasondavies/bl.ocks.chrome/bl.ocks.chrome.crx
+[extension]: http://github.com/downloads/jasondavies/bl.ocks.chrome/bl.ocks.chrome-1.1.crx
 
 Developers
 ----------
