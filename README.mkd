@@ -8,6 +8,8 @@ For the Chrome extension, see
 
 ## Build Instructions
 
-This is the [Safari sxtension](http://extensions.apple.com/) for
-<http://bl.ocks.org>. If you're looking for the source code for the website,
+This is the [Safari extension](http://extensions.apple.com/) for
+<http://bl.ocks.org>. See Apple's [development
+guide](http://developer.apple.com/library/safari/#documentation/Tools/Conceptual/SafariExtensionGuide/Introduction/Introduction.html)
+for more information. If you're looking for the source code for the website,
 see the `master` branch.
