@@ -20,7 +20,7 @@ a bookmark.
 Developers
 ----------
 
-To package the Google Chrome extension, visit <chrome://extensions/> and click
+To package the Google Chrome extension, visit `chrome://extensions/` and click
 on 'Developer mode'.  Then click 'Pack extension...' and select the
 `bl.ocks.chrome` directory.  This will create a file called
 `bl.ocks.chrome.crx` that you can open in Google Chrome and install.  Once
