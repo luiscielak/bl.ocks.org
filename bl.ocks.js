@@ -1,7 +1,7 @@
 var reGist = /^https?\:\/\/gist\.github\.com\/(\d*)/i,
     reRel = /^\/?(\d+)$/,
     gist = reGist.test(location.href),
-    anchors = document.querySelectorAll("a"),
+    anchors = document.querySelectorAll("a[href]"),
     anchor,
     image,
     i = -1,
