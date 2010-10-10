@@ -25,5 +25,3 @@ on 'Developer mode'.  Then click 'Pack extension...' and select the
 `bl.ocks.chrome` directory.  This will create a file called
 `bl.ocks.chrome.crx` that you can open in Google Chrome and install.  Once
 installed, it will add the links automatically to any page you visit.
-
-The bookmarklet source is in `bl.ocks.bookmarklet.min.js`.
