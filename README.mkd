@@ -1,8 +1,13 @@
 # bl.ocks.org
 
-This is the [Safari sxtension](http://extensions.apple.com/) for
-<http://bl.ocks.org>. If you're looking for the source code for the website,
-see the `master` branch.
+To download the Safari extension, see
+[bl.ocks.safariextz](/downloads/mbostock/bl.ocks.org/bl.ocks.safariextz).
 
 For the Chrome extension, see
 [jasondavies/bl.ocks.chrome](/jasondavies/bl.ocks.chrome).
+
+## Build Instructions
+
+This is the [Safari sxtension](http://extensions.apple.com/) for
+<http://bl.ocks.org>. If you're looking for the source code for the website,
+see the `master` branch.
