@@ -27,7 +27,7 @@
 		</dict>
 	</dict>
 	<key>Description</key>
-	<string>Adds links to bl.ocks.org for Gists.</string>
+	<string>A simple viewer for code examples hosted on GitHub Gist.</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
