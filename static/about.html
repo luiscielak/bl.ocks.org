@@ -39,6 +39,21 @@
       </p>
       <br>
 
+      <h2>Bookmarklet</h2>
+
+      <p>
+        To access bl.ocks.org from other sites, drag this link to your
+        bookmarks bar: <a
+        href="javascript:(function(e,a,g,h,f,c,b,d){if(!(f=e.jQuery)||g&gt;f.fn.jquery||h(f)){c=a.createElement(&quot;script&quot;);c.type=&quot;text/javascript&quot;;c.src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/&quot;+g+&quot;/jquery.min.js&quot;;c.onload=c.onreadystatechange=function(){if(!b&amp;&amp;(!(d=this.readyState)||d==&quot;loaded&quot;||d==&quot;complete&quot;)){h((f=e.jQuery).noConflict(1),b=1);f(c).remove()}};a.documentElement.childNodes[0].appendChild(c)}})(window,document,&quot;1.4.2&quot;,function($,L){var
+        gist_re=/^https?\:\/\/gist\.github\.com\/(\d*)/i,rel_re=/^\/?(\d+)$/,on_gist=gist_re.test(location.href);$(&quot;a&quot;).each(function(){var
+        b=$(this).attr(&quot;href&quot;)||&#39;&#39;,a=b.match(gist_re);if(on_gist&amp;&amp;!(a&amp;&amp;a[1])){a=b.match(rel_re)}if(a&amp;&amp;a[1]){$(this).after(&#39;
+        &lt;a
+        href=&quot;http://bl.ocks.org/&#39;+a[1]+&#39;&quot;&gt;[bl.ocks.org]&lt;/a&gt;&#39;)}});});">[bl.ocks.org]</a>.
+        This bookmarklet finds Gist links in the current page and appends a
+        link to the corresponding bl.ock.
+      </p>
+      <br>
+
       <h2>Credits</h2>
 
       <p>
