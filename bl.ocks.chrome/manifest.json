@@ -1,0 +1,11 @@
+{
+  "name": "bl.ocks.org",
+  "version": "1.0",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "all_frames": true,
+      "js": ["jquery.min.js", "bl.ocks.js"]
+    }
+  ]
+}
