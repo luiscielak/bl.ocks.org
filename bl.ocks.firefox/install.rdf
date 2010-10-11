@@ -6,7 +6,7 @@
   
     <em:id>extension@bl.ocks.org</em:id>
     <em:name>bl.ocks.org</em:name>
-    <em:version>1.0</em:version>
+    <em:version>1.0.0</em:version>
     <em:description>Adds bl.ocks links to Gist links.</em:description>
     <em:creator>Jason Davies</em:creator>
     <em:homepageURL>http://bl.ocks.org/</em:homepageURL>
