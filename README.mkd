@@ -3,5 +3,13 @@
 A simple Gist viewer for HTML/JavaScript examples. See <http://bl.ocks.org>
 for more information. The website runs on Google App Engine.
 
-For the Safari extension, see the `safariextension` branch. For the Chrome
-extension, see [jasondavies/bl.ocks.chrome](/jasondavies/bl.ocks.chrome).
+## Browser Extensions
+
+To download the Safari extension, see
+[bl.ocks.safariextz](/downloads/mbostock/bl.ocks.org/bl.ocks.safariextz). For
+the source code, see the `safari` directory. See Apple's [development
+guide](http://developer.apple.com/library/safari/#documentation/Tools/Conceptual/SafariExtensionGuide/Introduction/Introduction.html)
+for an introduction on Safari extensions.
+
+For Chrome and Firefox extensions, see
+[jasondavies/bl.ocks.chrome](/jasondavies/bl.ocks.chrome).
