@@ -70,7 +70,7 @@ class GistViewHandler(webapp.RequestHandler):
 
     # display the README
     for f in files:
-      if re.match("^readme\.mkd$", f, re.I):
+      if re.match("^readme\.(md|mkd|markdown)$", f, re.I):
         html = markdown(smart_unicode(fetch('http://gist.github.com/raw/%s/%s' % (id, quote(f))).content))
       elif re.match("^readme(\.txt)?$", f, re.I):
         html = "<pre>%s</pre>" % escape(fetch('http://gist.github.com/raw/%s/%s' % (id, quote(f))).content)
